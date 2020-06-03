@@ -1,0 +1,40 @@
+---
+title: "Week 4 Develop Data Product Presentation"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Introduction
+The current product features the ability to estimate prices of diamond, based on your selected features including cut, color, carat, and clarity. The source data used to build the model comes from the R diamond dataset, featuring attributes of over 50,000 round cut diamond.
+
+
+# Application Usage 
+The linear model fit takes into account the cut, color, carat, and clarity of the diamonds, covering over 98% of the total variability in the diamonds' attributes. 
+
+The app can be found at: https://pl1123.shinyapps.io/ExampleApp-Diamond/
+
+The code can be found in the repository at: https://github.com/PL1123/Week4_Dev_Data_Product-
+
+
+# Diamond Dataset 
+The complete dataframe contains 10 variables: 
+price, carat (weight), cut (quality of the cut), color, clarity, x(length in mm), y(width), z(depth), depth(total depth percentage), table(width of top of diamond relative to widest point).
+
+Carat, cut, color, and clarity are the major factors predicting diamond price. 
+
+
+# Diamond Dataset Plot
+```{r, echo = F, warning=FALSE, message=FALSE}
+library(plotly)
+library(ggplot2)
+data(diamonds)
+p <- diamonds %>%
+        ggplot(aes(x = carat, y = price, col = cut), position = "jitter") +
+        geom_point(size = 0.025) +
+        labs(title = "Diamond dataset: carat vs price")
+(gg <- ggplotly(p))
+```
+
